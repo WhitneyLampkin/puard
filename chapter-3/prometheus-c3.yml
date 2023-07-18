@@ -4,8 +4,10 @@ scrape_configs:
  - job_name: prometheus
    static_configs:
     - targets:
-      - localhost:9090
+      # Use host.docker.internal in place of localhost
+      - host.docker.internal:9090
  - job_name: hello-world-app
    static_configs:
     - targets:
-      - localhost:8000
+      # Use host.docker.internal in place of localhost
+      - host.docker.internal:8000

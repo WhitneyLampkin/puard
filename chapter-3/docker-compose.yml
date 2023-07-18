@@ -9,8 +9,10 @@ services:
       - 9090:9090
   hello-world:
     build: .
+    networks:
+      - localprom
     ports:
-      - 8001:80
+      - 8080:80
       - 8000:8000
 networks:
   localprom:

@@ -18,7 +18,8 @@ RUN pip3 install -r requirements.txt
 RUN chmod u+x hello-world.py
 
 EXPOSE 8000
+EXPOSE 8080
 
-ENTRYPOINT ["python3", "hello-world.py"]
+ENTRYPOINT ["python3"]
 
-# CMD ["hello-world.py"]
+CMD ["hello-world.py"]
