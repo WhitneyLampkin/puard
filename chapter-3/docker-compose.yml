@@ -1,0 +1,17 @@
+services:
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - "./prometheus-c3.yml:/etc/prometheus/prometheus.yml"
+    networks:
+      - localprom
+    ports:
+      - 9090:9090
+  hello-world:
+    build: .
+    ports:
+      - 8001:80
+      - 8000:8000
+networks:
+  localprom:
+    driver: bridge

@@ -14,5 +14,6 @@ class MyHandler(http.server.BaseHTTPRequestHandler):
 
 if __name__ == "__main__":
     start_http_server(8000)
-    server = http.server.HTTPServer(('localhost', 8001), MyHandler)
+    # Changed http server and port from 'localhost' and '8001' to work wtih docker
+    server = http.server.HTTPServer(('0.0.0.0', 80), MyHandler)
     server.serve_forever()
