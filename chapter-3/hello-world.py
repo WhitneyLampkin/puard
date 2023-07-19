@@ -45,6 +45,8 @@ LATENCY = Summary('hello_world_latency_seconds',
 
 # Histogram metric definitions
 # Histograms have a set of buckets that track number of events that fall into each bucket.
+# The recommended # of buckets is ~10.
+# +Inf bucket is the total number of events and cannot be omitted!
 LATENCY_HISTOGRAM = Histogram(
     'hello_world_latency_seconds', 'Time for a request Hello World.', buckets=[0.0001, 0.0002, 0.0005, 0.001, 0.01, 0.1])
 
@@ -87,6 +89,8 @@ if __name__ == "__main__":
 
 # Unit Test Example
 # <TODO> Pull this out into a separate unit test file
+
+# Test counter metric
 FOOS = Counter('foos_total', 'The number of foo calls.')
 
 
@@ -96,6 +100,7 @@ def foo():
 
 class TestFoo(unittest.TestCase):
     def test_counter_inc(self):
+        # get_sample_value function scrapes the registry and looks for time series.
         before = REGISTRY.get_sample_value('foos_total')
         foo()
         after = REGISTRY.get_sample_value('foos_total')
