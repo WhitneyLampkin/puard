@@ -2,6 +2,12 @@
 
 > TODO: Add all chapter notes
 
+## Build & Run
+
+`cd /puard/chapter-3`
+`docker compose build`
+`docker compose up`
+
 ## Approaching Instrumentation
 
 ### Service Instrumentation

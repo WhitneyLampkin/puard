@@ -68,15 +68,15 @@ class MyHandler(http.server.BaseHTTPRequestHandler):
         euros = random.random()
         SALES.inc(euros)
         start = time.time()  # Remove when using the LATENCY_Alternative
+        INPROGRESS.dec()  # Delete when using the Guage_Alternatives
+        # LATENCY_Alternative: @LATENCY.time()
+        LATENCY.observe(time.time() - start)
         self.send_response(200)
         self.end_headers()
         self.wfile.write(b"Hello World")
         self.wfile.write(
             "\r\nHello World for {} euros.".format(euros).encode())
         LAST.set(time.time())  # Guage_Alternative: LAST.set_to_current_time()
-        INPROGRESS.dec()  # Delete when using the Guage_Alternatives
-        # LATENCY_Alternative: @LATENCY.time()
-        LATENCY.observe(time.time() - start)
 
 
 if __name__ == "__main__":
