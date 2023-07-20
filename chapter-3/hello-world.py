@@ -48,7 +48,7 @@ LATENCY = Summary('hello_world_latency_seconds',
 # The recommended # of buckets is ~10.
 # +Inf bucket is the total number of events and cannot be omitted!
 LATENCY_HISTOGRAM = Histogram(
-    'hello_world_latency_seconds', 'Time for a request Hello World.', buckets=[0.0001, 0.0002, 0.0005, 0.001, 0.01, 0.1])
+    'hello_world_latency2_seconds', 'Time for a request Hello World.', buckets=[0.0001, 0.0002, 0.0005, 0.001, 0.01, 0.1])
 
 
 class MyHandler(http.server.BaseHTTPRequestHandler):
@@ -68,6 +68,7 @@ class MyHandler(http.server.BaseHTTPRequestHandler):
         euros = random.random()
         SALES.inc(euros)
         start = time.time()  # Remove when using the LATENCY_Alternative
+        LAST.set(time.time())  # Guage_Alternative: LAST.set_to_current_time()
         INPROGRESS.dec()  # Delete when using the Guage_Alternatives
         # LATENCY_Alternative: @LATENCY.time()
         LATENCY.observe(time.time() - start)
@@ -76,7 +77,6 @@ class MyHandler(http.server.BaseHTTPRequestHandler):
         self.wfile.write(b"Hello World")
         self.wfile.write(
             "\r\nHello World for {} euros.".format(euros).encode())
-        LAST.set(time.time())  # Guage_Alternative: LAST.set_to_current_time()
 
 
 if __name__ == "__main__":
