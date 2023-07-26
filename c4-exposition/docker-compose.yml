@@ -1,0 +1,19 @@
+services:
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - "./prometheus-c4.yml:/etc/prometheus/prometheus.yml"
+    networks:
+      - localprom
+    ports:
+      - 9090:9090
+  gunicorn-app:
+    build: .
+    networks:
+      - localprom
+    ports:
+      - 8080:80
+      - 8000:8000
+networks:
+  localprom:
+    driver: bridge
