@@ -1,3 +1,3 @@
-# C4. Exposition
+# What is Prometheus?
 
 > TODO: Add chapter notes
