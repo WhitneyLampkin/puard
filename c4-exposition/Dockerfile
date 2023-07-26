@@ -37,8 +37,8 @@ FROM python:3.8.0-slim
 ADD . /app
 WORKDIR /app
 RUN pip install -r requirements.txt
-RUN cd ./python-examples
+RUN cd ..
 EXPOSE 8000
 EXPOSE 8080
 # CMD ["python", "app.py"]
-CMD ["gunicorn", "-w","3", "-b", "0.0.0.0:8000", "python-examples.4-4-gunicorn-app:app"]
+# CMD ["gunicorn", "-w","3", "-b", "0.0.0.0:8000", "python-examples.4-4-gunicorn-app:app"]
