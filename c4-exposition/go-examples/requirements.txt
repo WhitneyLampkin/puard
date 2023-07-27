@@ -1,4 +1,3 @@
 prometheus_client
-gunicorn
 
 # Will need to add other dependencies if the other examples besides the Gunicorn python app need to be ran.
