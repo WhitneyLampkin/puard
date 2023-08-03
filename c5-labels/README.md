@@ -15,3 +15,9 @@
     http_requests_total{path="/comment"}
     http_requests_total{path="/view"}
     ```
+
+### Other Notes
+
+- Had issues running `docker-compose up --build` for the c5 python examples and learned that configuration issues were the cause.
+    - Fixed with `rm  ~/.docker/config.json `
+    - _[TODO]_: Understand why
