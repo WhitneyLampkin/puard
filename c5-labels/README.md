@@ -16,6 +16,16 @@
     http_requests_total{path="/view"}
     ```
 
+### Naming Conventions for Labels
+
+- Begin with a letter (a–z or A–Z) and be followed with letters, numbers, and underscores
+- Not usually namespaced
+- Avoid labels likely to be used as target labels, such as `env`, `cluster`, `service`, `team`, `zone`, `region` and `type`
+- Use snakecase
+- `instance` and `job` label names are reserved for Prometheus only
+- Can be any UTF-8 characters
+- Empty label values are allowed but my be confusing
+
 ### Other Notes
 
 - Had issues running `docker-compose up --build` for the c5 python examples and learned that configuration issues were the cause.
