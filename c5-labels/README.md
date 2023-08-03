@@ -26,8 +26,15 @@
 - Can be any UTF-8 characters
 - Empty label values are allowed but my be confusing
 
+### Aggregation
+
+- `sum`: add samples together by aggregating away the labels
+= `without`: label to remove 
+- `by`: keeps only the labels specified
+
 ### Other Notes
 
 - Had issues running `docker-compose up --build` for the c5 python examples and learned that configuration issues were the cause.
     - Fixed with `rm  ~/.docker/config.json `
     - _[TODO]_: Understand why
+- Use `rate(metric[time])` for couter metrics

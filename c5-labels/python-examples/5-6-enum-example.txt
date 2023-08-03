@@ -1,0 +1,6 @@
+# HELP gauge The current state of resources.
+# TYPE gauge resource_state
+resource_state{resource_state="STARTING",resource="blaa"} 0
+resource_state{resource_state="RUNNING",resource="blaa"} 1
+resource_state{resource_state="STOPPING",resource="blaa"} 0
+resource_state{resource_state="TERMINATED",resource="blaa"} 0
