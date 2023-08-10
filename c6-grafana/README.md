@@ -2,6 +2,10 @@
 
 IMPORTANT: Must use host.docker.internal:9090 for Prometheus in Grafana when running with Docker Compose
 
+## Final Grafana Dashboard
+
+![image](../images/final_grafana.png)
+
 ## Notes
 
 ### Panels
