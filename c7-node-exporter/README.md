@@ -79,10 +79,34 @@
     system call
     - labels: `nodename`, `instance`
 
-### OS Collector 
+### OS Collector
 
-### Loadavg Collector 
+- `node_os_`
+    - metrics: `node_os_info`, `node_os_version`
+
+### Loadavg Collector
+
+- `node_load#`: provides the 1-, 5-, and 15-minute load averages
+    - meaning varies per platform
 
 ### Pressure Collector
 
+- `node_pressure_`: resource pressure metrics for the following 3 resources: CPU, memory and I/O
+    - metrics: `node_pressure_cpu_waiting_seconds_total`, `node_pressure_io_stalled_seconds_total`, `node_pressure_io_waiting_seconds_total`, `node_pressure_memory_stalled_seconds_total`, `node_pressure_memory_waiting_seconds_total`
+
 ### Textfile Collector
+
+- metrics gathered from user files
+    - metrics about a machine
+- can be used to add user metrics to cronjobs or grab static info from files
+- using textfile collector
+    - enabled by default
+    - must provide the `--collector.textfile.directory` command-line flag to the Node Exporter for it to work
+
+**Running the Textfile example**
+
+`./node_exporter --collector.textfile.directory=$PWD/textfile`
+
+### Timestamps
+
+- `node_textfile_mtime_`
