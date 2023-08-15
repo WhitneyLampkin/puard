@@ -3,17 +3,10 @@ services:
     image: prom/prometheus
     volumes:
       - "./prometheus-c5-python.yml:/etc/prometheus/prometheus.yml"
-    networks:
-      - localprom
     ports:
       - 9090:9090
   hello-world:
     build: .
-    networks:
-      - localprom
     ports:
       - 8080:80
       - 8001:8001
-networks:
-  localprom:
-    driver: bridge
