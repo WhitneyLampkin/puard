@@ -1,4 +1,4 @@
-# Service Discovery
+# C8. Service Discovery
 
 > TODO: Add chapter notes
 
