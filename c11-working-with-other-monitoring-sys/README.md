@@ -39,6 +39,9 @@
 - Manually defining Counters
 ![Alt text](image-8.png)
 
+- StatsD Example w/ Mapping Config
+![Alt text](image-10.png)
+
 ## List of Monitoring Systems and Exporters
 - Collectd
 - InfluxBD
