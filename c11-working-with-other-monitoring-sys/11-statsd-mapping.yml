@@ -1,0 +1,6 @@
+mappings:
+- match: app.http.requests.*.*
+  name: app_http_requests_total
+  labels:
+    region: "${1}"
+    path: "${2}"
