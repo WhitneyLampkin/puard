@@ -135,6 +135,31 @@ route:
 
 ### Receivers
 
+```yml
+# alertmanager.yml 
+# receiver example using notification templates(based on go templating)
+receivers:
+ - name: frontend-pager
+   slack_configs:
+    - api_url: https://hooks.slack.com/services/XXXXXXXX
+      channel: '#pages'
+      title: 'Alerts in {{ .GroupLabels.region }} {{ .GroupLabels.env }}!'
+      text: >
+        {{ .Alerts | len }} alerts:
+        {{ range .Alerts }}
+        {{ range .Labels.SortedPairs }}{{ .Name }}={{ .Value }} {{ end }}
+        {{ if eq .Annotations.wiki "" -}}
+        Wiki: http://wiki.mycompany/{{ .Labels.alertname }}
+        {{- else -}}
+        Wiki: http://wiki.mycompany/{{ .Annotations.wiki }}
+        {{- end }}
+        {{ if ne .Annotations.dashboard "" -}}
+        Dashboard: {{ .Annotations.dashboard }}&region={{ .Labels.region }}
+        {{- end }}
+
+        {{ end }}
+```
+
 ### Inhibitions
 
 ## Alertmanager Web Interface
